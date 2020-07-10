@@ -4982,6 +4982,22 @@ he@^1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
+heic-convert@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/heic-convert/-/heic-convert-1.2.2.tgz#6b87003284b6213be9df24098c6141d904205ce3"
+  integrity sha512-4eBU7n4ZAVdjlP3WYFh+OsSWUrwgx/TBJSmnvTl8d70GZDEy16tHCmaoz08IuwUOp80ymuOqHgEHLmHAAG1gKQ==
+  dependencies:
+    heic-decode "^1.1.0"
+    jpeg-js "^0.3.6"
+    pngjs "^3.4.0"
+
+heic-decode@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/heic-decode/-/heic-decode-1.1.1.tgz#7b8c2e5a4b7a7bc1c8eb754ac35ed77be44c5a20"
+  integrity sha512-0KKYaXk2QSZrQIp4UKaNt/tyK8UGZkdfTzZRzny+cyYbNPJXRicaLCphMOuaBxHpHvCBTqnl0rM0qQ+rN98gJg==
+  dependencies:
+    libheif-js "^1.6.1"
+
 hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
@@ -6134,6 +6150,11 @@ jest@24.9.0:
     import-local "^2.0.0"
     jest-cli "^24.9.0"
 
+jpeg-js@^0.3.6:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.3.7.tgz#471a89d06011640592d314158608690172b1028d"
+  integrity sha512-9IXdWudL61npZjvLuVe/ktHiA41iE8qFyLB+4VDTblEsWBzeg8WQTlktdUK4CdncUqtUgUg0bbOmTE2bKBKaBQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -6402,6 +6423,11 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+libheif-js@^1.6.1:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/libheif-js/-/libheif-js-1.6.2.tgz#e57ace34dbb1b9ae9bd46d6119fa6ff2b03ac684"
+  integrity sha512-+UJ9x/D62Yf87ff9iSRMAldaKfvSIpkubqLalJugf2lu8F9tyeDXEZZP3cFbW+DoKt/n5IH9gnp5myR5W3YI0A==
 
 lines-and-columns@^1.1.6:
   version "1.1.6"
@@ -7628,6 +7654,11 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
+
+pngjs@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
+  integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
 
 pnp-webpack-plugin@1.6.4:
   version "1.6.4"
@@ -10515,9 +10546,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   version "1.0.5"
