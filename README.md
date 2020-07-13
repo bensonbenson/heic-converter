@@ -11,10 +11,10 @@ yarn start
 ```
 
 ## The converter
-The underlying package that does the converting is [heic-convert](https://github.com/catdad-experiments/heic-convert).
+The underlying package that does the converting is [heic2any](https://github.com/alexcorvi/heic2any).
 
 ### To-do
 - [x] upload
-- [ ] convert
+- [x] convert
 - [ ] download converted file
 - [ ] css
