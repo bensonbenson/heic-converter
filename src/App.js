@@ -6,24 +6,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      file: {}
+      isLoading: false // Display loader when converting
     }
     this.uploadHandler = this.uploadHandler.bind(this);
   }
 
   uploadHandler = (event) => {
-    const uploadedFile = event.target.files[0];
-    console.log(uploadedFile);
+    this.setState({ isLoading: true })
+    const uploadedBlob = event.target.files;
 
-    const blob = new Blob(event.target.files)
-    console.log(blob)
+    const blob = new Blob(uploadedBlob)
     heic2any({
       blob,
       toType: "image/jpeg",
       quality: 0.9
     })
     .then((conversionResult) => {
-      console.log(conversionResult)
+      this.setState({ isLoading: false })
       let url = URL.createObjectURL(conversionResult);
       document.getElementById("target").innerHTML = `<a target="_blank" href="${url}"><img src="${url}"></a>`;
     })
@@ -31,10 +30,12 @@ class App extends React.Component {
   }
 
   render() {
+    const loader = this.state.isLoading ? "loader" : "";
     return (
       <div>
         <input type="file" name="file" onChange={this.uploadHandler} />
         <div id="target"></div>
+        <div className={loader}></div>
       </div>
     );
   }
