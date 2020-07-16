@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 const heic2any = require("heic2any");
+const FileSaver = require('file-saver');
 
 class App extends React.Component {
   constructor(props) {
@@ -23,8 +24,8 @@ class App extends React.Component {
     })
     .then((conversionResult) => {
       this.setState({ isLoading: false })
-      let url = URL.createObjectURL(conversionResult);
-      document.getElementById("target").innerHTML = `<a target="_blank" href="${url}"><img src="${url}"></a>`;
+      console.log(conversionResult)
+      FileSaver.saveAs(conversionResult, 'conversion.jpg')
     })
     .catch(error => console.log(error))
   }
