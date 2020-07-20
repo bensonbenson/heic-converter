@@ -25,4 +25,4 @@ The underlying package that does the converting is [heic2any](https://github.com
 - [x] check user input for heic files
 - [ ] favicon
 - [ ] clean up unused boilerplate
-- [ ] use button to initiate conversion
+- [x] use button to initiate conversion
