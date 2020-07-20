@@ -19,4 +19,6 @@ The underlying package that does the converting is [heic2any](https://github.com
 - [x] download converted file
 - [ ] css
 - [ ] allow user to change type of converted file
-- [ ] check user input for heic files
+- [x] check user input for heic files
+- [ ] favicon
+- [ ] clean up unused boilerplate
