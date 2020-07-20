@@ -13,8 +13,8 @@ class App extends React.Component {
     this.uploadHandler = this.uploadHandler.bind(this);
   }
 
-  // Remove file error if it's there
-  resetState = () => {
+  // Remove file error css
+  resetFileErrorState = () => {
     this.setState({isFileTypeError: false})
   }
 
@@ -38,7 +38,10 @@ class App extends React.Component {
   }
 
   uploadHandler = (event) => {
-    this.resetState();
+    // Remove file error if it's there
+    if (this.state.isFileTypeError) {
+      this.resetFileErrorState();
+    }
 
     // Check if file is of heic type
     if (event.target.files[0].type !== "image/heic") {
@@ -53,8 +56,9 @@ class App extends React.Component {
 
     // Loader
     this.setState({ isLoading: true })
-    const uploadedBlob = event.target.files;
 
+    // Convert file stream to blob and convert
+    const uploadedBlob = event.target.files;
     const blob = new Blob(uploadedBlob)
     this.convertFile(blob);
   }
