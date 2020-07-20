@@ -13,22 +13,17 @@ class App extends React.Component {
     this.uploadHandler = this.uploadHandler.bind(this);
   }
 
-  uploadHandler = (event) => {
-    // Check if file is of heic type
-    if (event.target.files[0].type !== "image/heic") {
-      this.setState({
-        isLoading: false,
-        isFileTypeError: true
-      });
-      // clear upload input
-      document.getElementById("upload").value = "";
-      return;
-    }
+  // Remove file error if it's there
+  resetState = () => {
+    this.setState({isFileTypeError: false})
+  }
 
-    this.setState({ isLoading: true })
-    const uploadedBlob = event.target.files;
+  // Clear input element
+  clearUpload = () => {
+    document.getElementById("upload").value = "";
+  }
 
-    const blob = new Blob(uploadedBlob)
+  convertFile = (blob) => {
     heic2any({
       blob,
       toType: "image/jpeg",
@@ -37,8 +32,31 @@ class App extends React.Component {
     .then((conversionResult) => {
       this.setState({ isLoading: false });
       FileSaver.saveAs(conversionResult, 'conversion.jpg');
+      this.clearUpload();
     })
     .catch(error => console.log(error))
+  }
+
+  uploadHandler = (event) => {
+    this.resetState();
+
+    // Check if file is of heic type
+    if (event.target.files[0].type !== "image/heic") {
+      this.setState({
+        isLoading: false,
+        isFileTypeError: true
+      });
+      // Clear upload input
+      this.clearUpload();
+      return;
+    }
+
+    // Loader
+    this.setState({ isLoading: true })
+    const uploadedBlob = event.target.files;
+
+    const blob = new Blob(uploadedBlob)
+    this.convertFile(blob);
   }
 
   render() {
