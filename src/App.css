@@ -1,10 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.page {
+  text-align: center;
+}
+
+.header-container {
+  width: 100%;
+  height: 20%;
+  background-color: #009999;
+  margin-bottom: 20px;
+}
+
+.header {
+  padding: 20px;
+  color: white;
+  font-size: 34px;
+}
+
+.box {
+  padding: 5px;
+  margin: auto;
+  width: 50%;
+  height: 25%;
+  border: 3px solid black;
+}
+
+.box-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.upload {
+  font-family: 'Poppins', sans-serif;
+}
+
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+  margin: auto;
 }
 
 @keyframes spin {
