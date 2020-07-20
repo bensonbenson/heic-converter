@@ -26,3 +26,4 @@ The underlying package that does the converting is [heic2any](https://github.com
 - [ ] favicon
 - [ ] clean up unused boilerplate
 - [x] use button to initiate conversion
+- [ ] host demo
