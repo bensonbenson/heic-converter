@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      uploadedBlob: {},
+      uploadedBlob: '',
       isLoading: false, // Display loader when converting
       isFileTypeError: false
     }
@@ -59,12 +59,19 @@ class App extends React.Component {
     this.setState({ uploadedBlob: event.target.files });
   }
 
+  // Submit button
   convertHandler = () => {
+    const uploadedBlob = this.state.uploadedBlob;
+    // Don't submit if there's no file
+    if (!this.state.uploadedBlob) {
+      window.alert("Please select a HEIC file.")
+      return;
+    }
+
     // Loader
     this.setState({ isLoading: true })
 
     // Convert file stream to blob and convert
-    const uploadedBlob = this.state.uploadedBlob;
     const blob = new Blob(uploadedBlob)
     this.convertFile(blob);
   }
@@ -81,7 +88,7 @@ class App extends React.Component {
         <div className="box">
           <div className="box-header">Upload File</div>
           <input id="upload" type="file" name="file" onChange={this.uploadHandler} className="upload" />
-          <button onClick={this.convertHandler}>Convert</button>
+          <button onClick={this.convertHandler} className="submit-button">Convert</button>
           <div className={loader}></div>
           <div className={fileError}>Error: wrong file type</div>
         </div>
