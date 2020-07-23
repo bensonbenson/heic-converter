@@ -19,7 +19,7 @@ The underlying package that does the converting is [heic2any](https://github.com
 - [x] upload
 - [x] convert
 - [x] download converted file
-- [ ] css
+- [x] css
 - [ ] allow user to change type of converted file
 - [ ] allow user to change quality
 - [x] check user input for heic files

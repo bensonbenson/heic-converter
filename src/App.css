@@ -35,6 +35,8 @@ body {
 
 .upload {
   font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  outline: none;
 }
 
 .loader {
@@ -77,4 +79,5 @@ body {
   background: #f6b93b;
   border-color: #f6b93b;
   transition: all 0.4s ease 0s;
+  cursor: pointer;
 }
