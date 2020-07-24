@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import Select from 'react-select';
+import { options } from './SelectOptions.js'
 const heic2any = require("heic2any");
 const FileSaver = require('file-saver');
 
@@ -9,10 +11,12 @@ class App extends React.Component {
     this.state = {
       uploadedBlob: '',
       isLoading: false, // Display loader when converting
-      isFileTypeError: false
+      isFileTypeError: false,
+      selectedFileType: options[0]
     }
     this.uploadHandler = this.uploadHandler.bind(this);
     this.convertHandler = this.convertHandler.bind(this);
+    this.selectHandler = this.selectHandler.bind(this);
   }
 
   // Remove file error css
@@ -26,17 +30,38 @@ class App extends React.Component {
   }
 
   convertFile = (blob) => {
-    heic2any({
-      blob,
-      toType: "image/jpeg",
-      quality: 0.9
-    })
-    .then((conversionResult) => {
-      this.setState({ isLoading: false });
-      FileSaver.saveAs(conversionResult, 'conversion.jpg');
-      this.clearUpload();
-    })
-    .catch(error => console.log(error))
+    const fileType = this.state.selectedFileType.value;
+
+    // Convert to desired file type
+    switch (fileType) {
+      case "jpg":
+        heic2any({
+          blob,
+          toType: "image/jpeg",
+          quality: 0.9
+        })
+        .then((conversionResult) => {
+          this.setState({ isLoading: false });
+          FileSaver.saveAs(conversionResult, 'conversion.jpg');
+          this.clearUpload();
+        })
+        .catch(error => console.log(error));
+        break;
+      case "png":
+        heic2any({
+          blob,
+          toType: "image/png",
+        })
+        .then((conversionResult) => {
+          this.setState({ isLoading: false });
+          FileSaver.saveAs(conversionResult, 'conversion.png');
+          this.clearUpload();
+        })
+        .catch(error => console.log(error));
+        break;
+      default:
+        break;
+    }
   }
 
   uploadHandler = (event) => {
@@ -76,6 +101,11 @@ class App extends React.Component {
     this.convertFile(blob);
   }
 
+  selectHandler = (event) => {
+    console.log(event)
+    this.setState({ selectedFileType: event })
+  }
+
   render() {
     const loader = this.state.isLoading ? "loader" : "";
     const fileError = this.state.isFileTypeError ? "file-error" : "dont-show-error";
@@ -89,6 +119,8 @@ class App extends React.Component {
           <div className="box-header">Upload File</div>
           <input id="upload" type="file" name="file" onChange={this.uploadHandler} className="upload" />
           <button onClick={this.convertHandler} className="submit-button">Convert</button>
+          <div>Select an output format:</div>
+          <Select options={options} defaultValue={options[0]} onChange={this.selectHandler} className={"select"} />
           <div className={loader}></div>
           <div className={fileError}>Error: wrong file type</div>
         </div>

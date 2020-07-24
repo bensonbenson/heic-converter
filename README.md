@@ -1,6 +1,6 @@
 # Convert HEIC files to JPG
 
-Convert your `.heic` files to `.jpg`.
+Convert your [`.heic`](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) files to `.jpg`.
 
 ## Running the app
 
