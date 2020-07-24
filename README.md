@@ -1,6 +1,6 @@
-# Convert HEIC files to JPG
+# HEIC file converter
 
-Convert your [`.heic`](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) files to `.jpg`.
+Convert your [`.heic`](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) files to `.jpg` or `.png`.
 
 ## Running the app
 
@@ -24,6 +24,6 @@ The underlying package that does the converting is [heic2any](https://github.com
 - [ ] allow user to change quality
 - [x] check user input for heic files
 - [ ] favicon
-- [ ] clean up unused boilerplate
+- [x] clean up unused boilerplate
 - [x] use button to initiate conversion
 - [ ] host demo
