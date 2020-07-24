@@ -21,7 +21,7 @@ class App extends React.Component {
 
   // Remove file error css
   resetFileErrorState = () => {
-    this.setState({isFileTypeError: false})
+    this.setState({isFileTypeError: false});
   }
 
   // Clear input element
@@ -32,6 +32,12 @@ class App extends React.Component {
   convertFile = (blob) => {
     const fileType = this.state.selectedFileType.value;
 
+    // Clear state and form
+    const resetPage = () => {
+      this.setState({ isLoading: false });
+      this.clearUpload();
+    }
+
     // Convert to desired file type
     switch (fileType) {
       case "jpg":
@@ -41,9 +47,8 @@ class App extends React.Component {
           quality: 0.9
         })
         .then((conversionResult) => {
-          this.setState({ isLoading: false });
           FileSaver.saveAs(conversionResult, 'conversion.jpg');
-          this.clearUpload();
+          resetPage();
         })
         .catch(error => console.log(error));
         break;
@@ -53,9 +58,8 @@ class App extends React.Component {
           toType: "image/png",
         })
         .then((conversionResult) => {
-          this.setState({ isLoading: false });
           FileSaver.saveAs(conversionResult, 'conversion.png');
-          this.clearUpload();
+          resetPage();
         })
         .catch(error => console.log(error));
         break;
@@ -89,21 +93,21 @@ class App extends React.Component {
     const uploadedBlob = this.state.uploadedBlob;
     // Don't submit if there's no file
     if (!this.state.uploadedBlob) {
-      window.alert("Please select a HEIC file.")
+      window.alert("Please select a HEIC file.");
       return;
     }
 
     // Loader
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true });
 
     // Convert file stream to blob and convert
-    const blob = new Blob(uploadedBlob)
+    const blob = new Blob(uploadedBlob);
     this.convertFile(blob);
   }
 
   selectHandler = (event) => {
-    console.log(event)
-    this.setState({ selectedFileType: event })
+    console.log(event);
+    this.setState({ selectedFileType: event });
   }
 
   render() {
@@ -114,7 +118,6 @@ class App extends React.Component {
         <div className="header-container">
           <div className="header">HEIC Converter</div>
         </div>
-
         <div className="box">
           <div className="box-header">Upload File</div>
           <input id="upload" type="file" name="file" onChange={this.uploadHandler} className="upload" />
