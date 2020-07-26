@@ -31,4 +31,4 @@ yarn start
 - [x] use button to initiate conversion
 - [ ] host demo
 
-[!alttext](./src/preview.gif)
+![alttext](./src/preview.gif)
