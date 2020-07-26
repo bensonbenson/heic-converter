@@ -24,9 +24,11 @@ yarn start
 - [x] download converted file
 - [x] css
 - [x] allow user to change type of converted file
-- [ ] allow user to change quality
+- [ ] ~~allow user to change quality~~
 - [x] check user input for heic files
-- [ ] favicon
+- [x] favicon
 - [x] clean up unused boilerplate
 - [x] use button to initiate conversion
 - [ ] host demo
+
+[!alttext](./src/preview.gif)
