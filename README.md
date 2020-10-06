@@ -29,6 +29,7 @@ yarn start
 - [x] favicon
 - [x] clean up unused boilerplate
 - [x] use button to initiate conversion
-- [ ] host demo
+- [x] host demo
 
-![alttext](./src/preview.gif)
+### Demo
+Visit: https://bensonbenson.github.io/heic-converter/
