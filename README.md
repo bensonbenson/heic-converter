@@ -30,6 +30,7 @@ yarn start
 - [x] clean up unused boilerplate
 - [x] use button to initiate conversion
 - [x] host demo
+- [ ] allow upload of multiple files
 
 ### Demo
 Visit: https://bensonbenson.github.io/heic-converter/
