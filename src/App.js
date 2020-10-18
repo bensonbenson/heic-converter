@@ -119,7 +119,7 @@ class App extends React.Component {
           <div className="header">HEIC Converter</div>
         </div>
         <div className="box">
-          <div className="box-header">Upload File</div>
+          <div className="box-header">Upload your HEIC file</div>
           <input id="upload" type="file" name="file" onChange={this.uploadHandler} className="upload" />
           <button onClick={this.convertHandler} className="submit-button">Convert</button>
           <div>Select an output format:</div>
