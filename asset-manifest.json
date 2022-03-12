@@ -1,22 +1,13 @@
 {
   "files": {
-    "main.css": "/heic-converter/static/css/main.244fae5e.chunk.css",
-    "main.js": "/heic-converter/static/js/main.83ae2970.chunk.js",
-    "main.js.map": "/heic-converter/static/js/main.83ae2970.chunk.js.map",
-    "runtime-main.js": "/heic-converter/static/js/runtime-main.115d6538.js",
-    "runtime-main.js.map": "/heic-converter/static/js/runtime-main.115d6538.js.map",
-    "static/js/2.bee7b999.chunk.js": "/heic-converter/static/js/2.bee7b999.chunk.js",
-    "static/js/2.bee7b999.chunk.js.map": "/heic-converter/static/js/2.bee7b999.chunk.js.map",
+    "main.css": "/heic-converter/static/css/main.e7867555.css",
+    "main.js": "/heic-converter/static/js/main.0f754984.js",
     "index.html": "/heic-converter/index.html",
-    "precache-manifest.ad8a7f4c76cf70a80dc5b66b59ac1b0f.js": "/heic-converter/precache-manifest.ad8a7f4c76cf70a80dc5b66b59ac1b0f.js",
-    "service-worker.js": "/heic-converter/service-worker.js",
-    "static/css/main.244fae5e.chunk.css.map": "/heic-converter/static/css/main.244fae5e.chunk.css.map",
-    "static/js/2.bee7b999.chunk.js.LICENSE.txt": "/heic-converter/static/js/2.bee7b999.chunk.js.LICENSE.txt"
+    "main.e7867555.css.map": "/heic-converter/static/css/main.e7867555.css.map",
+    "main.0f754984.js.map": "/heic-converter/static/js/main.0f754984.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.115d6538.js",
-    "static/js/2.bee7b999.chunk.js",
-    "static/css/main.244fae5e.chunk.css",
-    "static/js/main.83ae2970.chunk.js"
+    "static/css/main.e7867555.css",
+    "static/js/main.0f754984.js"
   ]
 }
