@@ -1,12 +1,12 @@
-import { React, useState } from "react";
-import "./App.css";
-import Select from "react-select";
-import { options } from "./SelectOptions.js";
-const heic2any = require("heic2any");
-const FileSaver = require("file-saver");
+import { React, useState } from 'react';
+import './App.css';
+import Select from 'react-select';
+import { options } from './SelectOptions.js';
+import heic2any from 'heic2any';
+import FileSaver from 'file-saver';
 
 const App = () => {
-  const [uploadedBlob, setUploadedBlob] = useState("");
+  const [uploadedBlob, setUploadedBlob] = useState('');
   const [isLoading, setIsLoading] = useState(false); // display spinner when converting
   const [isFileTypeError, setIsFileTypeError] = useState(false);
   const [selectedFileType, setSelectedFileType] = useState(options[0]);
@@ -18,7 +18,7 @@ const App = () => {
 
   // Clear input element
   const clearUpload = () => {
-    document.getElementById("upload").value = "";
+    document.getElementById('upload').value = '';
   };
 
   const convertFile = (blob) => {
@@ -32,25 +32,25 @@ const App = () => {
 
     // Convert to desired file type
     switch (fileType) {
-      case "jpg":
+      case 'jpg':
         heic2any({
           blob,
-          toType: "image/jpeg",
+          toType: 'image/jpeg',
           quality: 0.9,
         })
           .then((conversionResult) => {
-            FileSaver.saveAs(conversionResult, "conversion.jpg");
+            FileSaver.saveAs(conversionResult, 'conversion.jpg');
             resetPage();
           })
           .catch((error) => console.log(error));
         break;
-      case "png":
+      case 'png':
         heic2any({
           blob,
-          toType: "image/png",
+          toType: 'image/png',
         })
           .then((conversionResult) => {
-            FileSaver.saveAs(conversionResult, "conversion.png");
+            FileSaver.saveAs(conversionResult, 'conversion.png');
             resetPage();
           })
           .catch((error) => console.log(error));
@@ -67,7 +67,7 @@ const App = () => {
     }
 
     // Check if file is of heic type
-    if (event.target.files[0].type !== "image/heic") {
+    if (event.target.files[0].type !== 'image/heic') {
       setIsLoading(false);
       setIsFileTypeError(true);
       // Clear upload input
@@ -83,7 +83,7 @@ const App = () => {
     const uploadedBlobObj = uploadedBlob;
     // Don't submit if there's no file
     if (!uploadedBlob) {
-      window.alert("Please select a HEIC file.");
+      window.alert('Please select a HEIC file.');
       return;
     }
 
@@ -99,8 +99,8 @@ const App = () => {
     setSelectedFileType(event);
   };
 
-  const loader = isLoading ? "loader" : "";
-  const fileError = isFileTypeError ? "file-error" : "dont-show-error";
+  const loader = isLoading ? 'loader' : '';
+  const fileError = isFileTypeError ? 'file-error' : 'dont-show-error';
   return (
     <div className="page">
       <div className="header-container">
@@ -123,7 +123,7 @@ const App = () => {
           options={options}
           defaultValue={options[0]}
           onChange={selectHandler}
-          className={"select"}
+          className={'select'}
         />
         <div className={loader}></div>
         <div className={fileError}>Error: wrong file type</div>
