@@ -1,8 +1,6 @@
 # HEIC file converter
 
-Convert your [`.heic`](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) files to `.jpg` or `.png`.
-
-Basic React web app that converts your `.heic` files client side.
+Convert your [`.heic`](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) files to `.jpg` or `.png` on the client side
 
 ## The converter
 
