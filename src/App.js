@@ -10,6 +10,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false); // display spinner when converting
   const [isFileTypeError, setIsFileTypeError] = useState(false);
   const [selectedFileType, setSelectedFileType] = useState(options[0]);
+  const [isConversionError, setIsConversionError] = useState(false);
+  const [conversionErrorMsg, setConversionErrorMsg] = useState('');
 
   // Remove file error css
   const resetFileErrorState = () => {
@@ -42,7 +44,10 @@ const App = () => {
             FileSaver.saveAs(conversionResult, 'conversion.jpg');
             resetPage();
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            setIsConversionError(true);
+            setConversionErrorMsg(`Error converting file: ${error}`);
+          });
         break;
       case 'png':
         heic2any({
@@ -53,7 +58,10 @@ const App = () => {
             FileSaver.saveAs(conversionResult, 'conversion.png');
             resetPage();
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            setIsConversionError(true);
+            setConversionErrorMsg(`Error converting file: ${error}`);
+          });
         break;
       default:
         break;
@@ -99,8 +107,20 @@ const App = () => {
     setSelectedFileType(event);
   };
 
+  const renderError = () => {
+    const fileError = isFileTypeError ? 'file-error' : 'dont-show-error';
+    const conversionError = isConversionError
+      ? 'file-error'
+      : 'dont-show-error';
+    return (
+      <>
+        <div className={fileError}>Error: wrong file type</div>
+        <div className={conversionError}>{conversionErrorMsg}</div>
+      </>
+    );
+  };
+
   const loader = isLoading ? 'loader' : '';
-  const fileError = isFileTypeError ? 'file-error' : 'dont-show-error';
   return (
     <div className="page">
       <div className="header-container">
@@ -126,7 +146,7 @@ const App = () => {
           className={'select'}
         />
         <div className={loader}></div>
-        <div className={fileError}>Error: wrong file type</div>
+        {renderError()}
       </div>
     </div>
   );
