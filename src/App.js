@@ -1,42 +1,34 @@
-import React from 'react';
-import './App.css';
-import Select from 'react-select';
-import { options } from './SelectOptions.js'
+import { React, useState } from "react";
+import "./App.css";
+import Select from "react-select";
+import { options } from "./SelectOptions.js";
 const heic2any = require("heic2any");
-const FileSaver = require('file-saver');
+const FileSaver = require("file-saver");
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      uploadedBlob: '',
-      isLoading: false, // Display loader when converting
-      isFileTypeError: false,
-      selectedFileType: options[0]
-    }
-    this.uploadHandler = this.uploadHandler.bind(this);
-    this.convertHandler = this.convertHandler.bind(this);
-    this.selectHandler = this.selectHandler.bind(this);
-  }
+const App = () => {
+  const [uploadedBlob, setUploadedBlob] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // display spinner when converting
+  const [isFileTypeError, setIsFileTypeError] = useState(false);
+  const [selectedFileType, setSelectedFileType] = useState(options[0]);
 
   // Remove file error css
-  resetFileErrorState = () => {
-    this.setState({isFileTypeError: false});
-  }
+  const resetFileErrorState = () => {
+    setIsFileTypeError(false);
+  };
 
   // Clear input element
-  clearUpload = () => {
+  const clearUpload = () => {
     document.getElementById("upload").value = "";
-  }
+  };
 
-  convertFile = (blob) => {
-    const fileType = this.state.selectedFileType.value;
+  const convertFile = (blob) => {
+    const fileType = selectedFileType.value;
 
     // Clear state and form
     const resetPage = () => {
-      this.setState({ isLoading: false });
-      this.clearUpload();
-    }
+      setIsLoading(false);
+      clearUpload();
+    };
 
     // Convert to desired file type
     switch (fileType) {
@@ -44,92 +36,100 @@ class App extends React.Component {
         heic2any({
           blob,
           toType: "image/jpeg",
-          quality: 0.9
+          quality: 0.9,
         })
-        .then((conversionResult) => {
-          FileSaver.saveAs(conversionResult, 'conversion.jpg');
-          resetPage();
-        })
-        .catch(error => console.log(error));
+          .then((conversionResult) => {
+            FileSaver.saveAs(conversionResult, "conversion.jpg");
+            resetPage();
+          })
+          .catch((error) => console.log(error));
         break;
       case "png":
         heic2any({
           blob,
           toType: "image/png",
         })
-        .then((conversionResult) => {
-          FileSaver.saveAs(conversionResult, 'conversion.png');
-          resetPage();
-        })
-        .catch(error => console.log(error));
+          .then((conversionResult) => {
+            FileSaver.saveAs(conversionResult, "conversion.png");
+            resetPage();
+          })
+          .catch((error) => console.log(error));
         break;
       default:
         break;
     }
-  }
+  };
 
-  uploadHandler = (event) => {
+  const uploadHandler = (event) => {
     // Remove file error if it's there
-    if (this.state.isFileTypeError) {
-      this.resetFileErrorState();
+    if (isFileTypeError) {
+      resetFileErrorState();
     }
 
     // Check if file is of heic type
     if (event.target.files[0].type !== "image/heic") {
-      this.setState({
-        isLoading: false,
-        isFileTypeError: true
-      });
+      setIsLoading(false);
+      setIsFileTypeError(true);
       // Clear upload input
-      this.clearUpload();
+      clearUpload();
       return;
     }
 
-    this.setState({ uploadedBlob: event.target.files });
-  }
+    setUploadedBlob(event.target.files);
+  };
 
   // Submit button
-  convertHandler = () => {
-    const uploadedBlob = this.state.uploadedBlob;
+  const convertHandler = () => {
+    const uploadedBlobObj = uploadedBlob;
     // Don't submit if there's no file
-    if (!this.state.uploadedBlob) {
+    if (!uploadedBlob) {
       window.alert("Please select a HEIC file.");
       return;
     }
 
     // Loader
-    this.setState({ isLoading: true });
+    setIsLoading(true);
 
     // Convert file stream to blob and convert
-    const blob = new Blob(uploadedBlob);
-    this.convertFile(blob);
-  }
+    const blob = new Blob(uploadedBlobObj);
+    convertFile(blob);
+  };
 
-  selectHandler = (event) => {
-    console.log(event);
-    this.setState({ selectedFileType: event });
-  }
+  const selectHandler = (event) => {
+    setSelectedFileType(event);
+  };
 
-  render() {
-    const loader = this.state.isLoading ? "loader" : "";
-    const fileError = this.state.isFileTypeError ? "file-error" : "dont-show-error";
-    return (
-      <div className="page">
-        <div className="header-container">
-          <div className="header">HEIC Converter</div>
-        </div>
-        <div className="box">
-          <div className="box-header">Upload your HEIC file</div>
-          <input id="upload" type="file" name="file" onChange={this.uploadHandler} className="upload" />
-          <button onClick={this.convertHandler} className="submit-button">Convert</button>
-          <div>Select an output format:</div>
-          <Select options={options} defaultValue={options[0]} onChange={this.selectHandler} className={"select"} />
-          <div className={loader}></div>
-          <div className={fileError}>Error: wrong file type</div>
-        </div>
+  const loader = isLoading ? "loader" : "";
+  const fileError = isFileTypeError ? "file-error" : "dont-show-error";
+  return (
+    <div className="page">
+      <div className="header-container">
+        <div className="header">HEIC Converter</div>
       </div>
-    );
-  }
-}
+      <div className="box">
+        <div className="box-header">Upload your HEIC file</div>
+        <input
+          id="upload"
+          type="file"
+          name="file"
+          onChange={uploadHandler}
+          className="upload"
+        />
+        <button onClick={convertHandler} className="submit-button">
+          Convert
+        </button>
+        <div>Select an output format:</div>
+        <Select
+          options={options}
+          defaultValue={options[0]}
+          onChange={selectHandler}
+          className={"select"}
+        />
+        <div className={loader}></div>
+        <div className={fileError}>Error: wrong file type</div>
+      </div>
+    </div>
+  );
+};
 
 export default App;
