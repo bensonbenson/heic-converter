@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://bensonbenson.github.io/heic-converter/",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "file-saver": "^2.0.2",
@@ -12,7 +12,7 @@
     "heic2any": "^0.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^5.0.0",
     "react-select": "^3.1.0"
   },
   "scripts": {
