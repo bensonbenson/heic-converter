@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/heic-converter/static/css/main.e7867555.css",
-    "main.js": "/heic-converter/static/js/main.85d3147f.js",
+    "main.css": "/heic-converter/static/css/main.51156dab.css",
+    "main.js": "/heic-converter/static/js/main.849f42fa.js",
     "index.html": "/heic-converter/index.html",
-    "main.e7867555.css.map": "/heic-converter/static/css/main.e7867555.css.map",
-    "main.85d3147f.js.map": "/heic-converter/static/js/main.85d3147f.js.map"
+    "main.51156dab.css.map": "/heic-converter/static/css/main.51156dab.css.map",
+    "main.849f42fa.js.map": "/heic-converter/static/js/main.849f42fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.e7867555.css",
-    "static/js/main.85d3147f.js"
+    "static/css/main.51156dab.css",
+    "static/js/main.849f42fa.js"
   ]
 }
